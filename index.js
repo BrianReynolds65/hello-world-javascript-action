@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+var fs = require('fs');
 
 try {
   // `who-to-greet` input defined in action metadata file
@@ -11,6 +12,10 @@ try {
   const payload = JSON.stringify(github.context.payload, undefined, 2)
   console.log(`The event payload: ${payload}`);
   console.log('PWD:', process.cwd());
-  } catch (error) {
+  var files = fs.readdirSync(process.cwd());
+  files.forEach((file) => {
+    console.log(file)
+  })
+} catch (error) {
   core.setFailed(error.message);
 }
