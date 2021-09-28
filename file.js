@@ -1,7 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 
-export default function walk(dir, done) {
+export function walk(dir, done) {
   var results = [];
   fs.readdir(dir, function(err, list) {
     if (err) return done(err);
